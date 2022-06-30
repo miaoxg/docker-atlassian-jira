@@ -11,7 +11,6 @@ ENV  mysql_allow_empty_password yes
 
 copy mysql/setup.sh /tmp/setup.sh
 copy mysql/schema.sql /tmpl/schema.sql
-copy mysql/privileges.sql /tmp/privileges.sql
 
 
 cmd ["sh", "/mysql/setup.sh"]
