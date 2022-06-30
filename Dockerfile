@@ -1,11 +1,21 @@
 FROM centos:centos7.9.2009
 RUN yum -y install net-tools 
+FROM mysql:5.7.2
 FROM openjdk:8-alpine
 
 # Configuration variables.
 ENV JIRA_HOME     /var/atlassian/jira
 ENV JIRA_INSTALL  /opt/atlassian/jira
 ENV JIRA_VERSION  9.0.0
+ENV  mysql_allow_empty_password yes
+
+copy mysql/setup.sh /mysql/setup.sh
+copy mysql/schema.sql /mysql/schema.sql
+copy mysql/privileges.sql /mysql/privileges.sql
+
+
+cmd ["sh", "/mysql/setup.sh"]
+
 
 # Install Atlassian JIRA and helper tools and setup initial home
 # directory structure.
