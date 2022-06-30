@@ -1,6 +1,6 @@
 FROM centos:centos7.9.2009
+RUN yum -y install net-tools 
 FROM openjdk:8-alpine
-RUN yum install net-tools mysql -y
 
 # Configuration variables.
 ENV JIRA_HOME     /var/atlassian/jira
